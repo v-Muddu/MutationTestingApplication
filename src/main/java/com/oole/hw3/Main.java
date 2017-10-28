@@ -27,8 +27,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 
-import static com.sun.deploy.util.TrustedLibraries.checkJarFile;
-
 public class Main
 {
     final static String targetPackage = "org.apache.commons.lang3.math";
@@ -42,20 +40,16 @@ public class Main
     /*
     * this method mutates all the modifiers from private to public for all the classes in a given package
     */
-
     public void mutatedModifiers(String targetPackage) throws NotFoundException, CannotCompileException, IOException, ClassNotFoundException {
         ArrayList<?> list = getClassesForPackage(targetPackage);
           for(Object classes : list){
-            System.out.println("calls "+ classes);
+            //System.out.println("calls "+ classes);
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();
             //Class clazz = classLoader.loadClass("org.apache.commons.lang3.AnnotationUtils");
             //System.out.println("calls "+ classLoader.loadClass("org.apache.commons.lang3.AnnotationUtils"));
-           // CtClass clazz = pool.getCtClass(classes.toString());
         }
     }
-
-
 
     public static final List<Class<?>> getClassesInPackage(String packageName) {
         String path = packageName.replaceAll("\\.", File.separator);
