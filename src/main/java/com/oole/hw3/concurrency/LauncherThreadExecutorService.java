@@ -7,5 +7,9 @@ public class LauncherThreadExecutorService {
 
     public static ExecutorService executorService = Executors.newFixedThreadPool(10);
 
+    public static void shutdown(){
+        executorService.shutdown();
+    }
+
 
 }

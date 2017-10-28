@@ -1,6 +1,9 @@
 package com.oole.hw3;
 
 
+import com.oole.hw3.concurrency.LauncherThreadExecutorService;
+import com.oole.hw3.operators.AccessModifierOperator;
+import com.oole.hw3.operators.Operator;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -33,8 +36,12 @@ public class Main
     final static String targetFolder = "mutatedFiles/AMC";
 
     public static void main(String[] args) throws IOException, CannotCompileException, NotFoundException, ClassNotFoundException {
-        Main main = new Main();
-        main.mutatedModifiers(targetPackage);
+
+        Operator operator = new AccessModifierOperator();
+        LauncherThreadExecutorService.executorService.submit(operator);
+        LauncherThreadExecutorService.shutdown();
+        //Main main = new Main();
+        //main.mutatedModifiers(targetPackage);
     }
 
     /*
