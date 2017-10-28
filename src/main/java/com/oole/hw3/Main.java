@@ -1,10 +1,7 @@
 package com.oole.hw3;
 
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.NotFoundException;
+import javassist.*;
 import javassist.tools.reflect.Reflection;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
@@ -34,67 +31,26 @@ public class Main
 
     public static void main(String[] args) throws IOException, CannotCompileException, NotFoundException, ClassNotFoundException {
         Main main = new Main();
-        main.mutatedModifiers(targetPackage);
+        main.mutatedModifiers(targetPackage, targetFolder);
     }
 
     /*
     * this method mutates all the modifiers from private to public for all the classes in a given package
     */
-    public void mutatedModifiers(String targetPackage) throws NotFoundException, CannotCompileException, IOException, ClassNotFoundException {
-        ArrayList<?> list = getClassesForPackage(targetPackage);
-          for(Object classes : list){
-            //System.out.println("calls "+ classes);
+    public void mutatedModifiers(String targetPackage, String targetFolder ) throws NotFoundException, CannotCompileException, IOException, ClassNotFoundException {
+        List<?> classList = getClassesForPackage(targetPackage);
+        for( Object classes : classList){
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();
-            //Class clazz = classLoader.loadClass("org.apache.commons.lang3.AnnotationUtils");
-            //System.out.println("calls "+ classLoader.loadClass("org.apache.commons.lang3.AnnotationUtils"));
-        }
-    }
-
-    public static final List<Class<?>> getClassesInPackage(String packageName) {
-        String path = packageName.replaceAll("\\.", File.separator);
-        List<Class<?>> classes = new ArrayList<>();
-        String[] classPathEntries = System.getProperty("java.class.path").split(
-                System.getProperty("path.separator")
-        );
-
-        String name;
-        for (String classpathEntry : classPathEntries) {
-            if (classpathEntry.endsWith(".jar")) {
-                File jar = new File(classpathEntry);
-                try {
-                    JarInputStream is = new JarInputStream(new FileInputStream(jar));
-                    JarEntry entry;
-                    while((entry = is.getNextJarEntry()) != null) {
-                        name = entry.getName();
-                        if (name.endsWith(".class")) {
-                            if (name.contains(path) && name.endsWith(".class")) {
-                                String classPath = name.substring(0, entry.getName().length() - 6);
-                                classPath = classPath.replaceAll("[\\|/]", ".");
-                                classes.add(Class.forName(classPath));
-                            }
-                        }
-                    }
-                } catch (Exception ex) {
-                    // Silence is gold
-                }
-            } else {
-                try {
-                    File base = new File(classpathEntry + File.separatorChar + path);
-                    for (File file : base.listFiles()) {
-                        name = file.getName();
-                        if (name.endsWith(".class")) {
-                            name = name.substring(0, name.length() - 6);
-                            classes.add(Class.forName(packageName + "." + name));
-                        }
-                    }
-                } catch (Exception ex) {
-                    // Silence is gold
-                }
+            String className = ((Class) classes).getCanonicalName().toString();
+            classLoader.loadClass(className);
+            CtClass ctClass = pool.get(className);
+            CtMethod[] methods = ctClass.getDeclaredMethods();
+            for(CtMethod ctm : methods){
+                ctm.setModifiers(2);
             }
+            ctClass.writeFile(targetFolder);
         }
-
-        return classes;
     }
 
     private static void checkDirectory(File directory, String pckgname, ArrayList<Class<?>> classes) throws ClassNotFoundException {
