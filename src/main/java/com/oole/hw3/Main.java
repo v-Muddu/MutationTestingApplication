@@ -1,18 +1,8 @@
 package com.oole.hw3;
 
-
 import javassist.*;
-import javassist.tools.reflect.Reflection;
-import org.reflections.Reflections;
-import org.reflections.scanners.ResourcesScanner;
-import org.reflections.scanners.SubTypesScanner;
-import org.reflections.util.ClasspathHelper;
-import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
 import sun.net.www.protocol.file.FileURLConnection;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.JarURLConnection;
@@ -22,16 +12,38 @@ import java.net.URLDecoder;
 import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.jar.JarInputStream;
 
 public class Main
 {
-    final static String targetPackage = "org.apache.commons.lang3.math";
     final static String targetFolder = "mutatedFiles/AMC";
+    final static String targetPackageTime = "org.apache.commons.lang3.time";
+    final static String targetPackageArch = "org.apache.commons.lang3.arch";
+    final static String targetPackageBuilder = "org.apache.commons.lang3.builder";
+    final static String targetPackageConcurrent = "org.apache.commons.lang3.concurrent";
+    final static String targetPackageEvent = "org.apache.commons.lang3.event";
+    final static String targetPackageException = "org.apache.commons.lang3.exception";
+    final static String targetPackageMath = "org.apache.commons.lang3.math";
+    final static String targetPackageMutable = "org.apache.commons.lang3.mutable";
+    final static String targetPackageReflect = "org.apache.commons.lang3.reflect";
+    final static String targetPackageText = "org.apache.commons.lang3.text";
+    final static String targetPackageTuple = "org.apache.commons.lang3.tuple";
+    final static String targetPackageMain = "org.apache.commons.lang3";
+
 
     public static void main(String[] args) throws IOException, CannotCompileException, NotFoundException, ClassNotFoundException {
         Main main = new Main();
-        main.mutatedModifiers(targetPackage, targetFolder);
+       // main.mutatedModifiers(targetPackageTime, targetFolder);
+        // main.mutatedModifiers(targetPackageArch, targetFolder);
+       // main.mutatedModifiers(targetPackageBuilder, targetFolder);
+      //  main.mutatedModifiers(targetPackageConcurrent, targetFolder);
+     //  main.mutatedModifiers(targetPackageEvent, targetFolder);
+        main.mutatedModifiers(targetPackageException, targetFolder);
+        main.mutatedModifiers(targetPackageMath, targetFolder);
+        main.mutatedModifiers(targetPackageMutable, targetFolder);
+     //   main.mutatedModifiers(targetPackageReflect, targetFolder);
+     //   main.mutatedModifiers(targetPackageText, targetFolder);
+     //   main.mutatedModifiers(targetPackageTuple, targetFolder);
+        //main.mutatedModifiers(targetPackageMain, targetFolder);
     }
 
     /*
