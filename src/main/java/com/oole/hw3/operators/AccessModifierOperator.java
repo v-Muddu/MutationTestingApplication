@@ -2,6 +2,7 @@ package com.oole.hw3.operators;
 
 import com.oole.hw3.utility.FileUtils;
 import javassist.*;
+import javassist.bytecode.AccessFlag;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +15,6 @@ public class AccessModifierOperator implements Operator {
 
         List<String> classList = FileUtils.getClassNamesInJar();
         for(String className : classList){
-
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();
             try {
@@ -22,14 +22,12 @@ public class AccessModifierOperator implements Operator {
                 CtClass ctClass = pool.get(className);
                 CtMethod[] methods = ctClass.getDeclaredMethods();
                 for(CtMethod ctm : methods){
-                    ctm.setModifiers(2);
+                    ctm.setModifiers(AccessFlag.PRIVATE);
                 }
-                ctClass.writeFile(targetFolder);
+                ctClass.writeFile(targetFolderEncapsulation);
             } catch (ClassNotFoundException | NotFoundException | CannotCompileException | IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 
