@@ -2,6 +2,7 @@ package com.oole.hw3;
 
 import com.oole.hw3.concurrency.LauncherThreadExecutorService;
 import com.oole.hw3.operators.AccessModifierOperator;
+import com.oole.hw3.operators.GlobalVariablesMutation;
 import com.oole.hw3.operators.HidingVariablesOperator;
 import com.oole.hw3.operators.Operator;
 import javassist.CannotCompileException;
@@ -17,7 +18,11 @@ public class Main
            // LauncherThreadExecutorService.shutdown();
 
             Operator hideOperator = new HidingVariablesOperator();
-            LauncherThreadExecutorService.executorService.submit(hideOperator);
+            //LauncherThreadExecutorService.executorService.submit(hideOperator);
+           // LauncherThreadExecutorService.shutdown();
+
+            Operator JavaSpecOperators = new GlobalVariablesMutation();
+            LauncherThreadExecutorService.executorService.submit(JavaSpecOperators);
             LauncherThreadExecutorService.shutdown();
         }
     }
