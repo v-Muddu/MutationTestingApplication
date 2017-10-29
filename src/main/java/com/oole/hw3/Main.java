@@ -1,21 +1,36 @@
 package com.oole.hw3;
 
 import javassist.*;
+import javassist.bytecode.AccessFlag;
+import javassist.bytecode.ConstPool;
+import javassist.bytecode.FieldInfo;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
+import org.apache.commons.lang3.math.Fraction;
+import sun.awt.geom.AreaOp;
+import sun.jvm.hotspot.oops.AccessFlags;
 import sun.net.www.protocol.file.FileURLConnection;
+
+import javax.lang.model.type.PrimitiveType;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Annotation;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLDecoder;
+import java.rmi.AccessException;
 import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class Main
 {
-    final static String targetFolder = "mutatedFiles/AMC";
+    final static String targetFolderAMC = "mutatedFiles/AMC";
+    final static String targetFolderInheritance = "mutatedFiles/Inheritance";
+    final static String targetFolderPoly = "mutatedFiles/Polymorphism";
+    final static String taregetFolderJavaSpec = "mutatedFiles/JavaSpec";
     final static String targetPackageTime = "org.apache.commons.lang3.time";
     final static String targetPackageArch = "org.apache.commons.lang3.arch";
     final static String targetPackageBuilder = "org.apache.commons.lang3.builder";
@@ -36,15 +51,111 @@ public class Main
         // main.mutatedModifiers(targetPackageArch, targetFolder);
        // main.mutatedModifiers(targetPackageBuilder, targetFolder);
       //  main.mutatedModifiers(targetPackageConcurrent, targetFolder);
-     //  main.mutatedModifiers(targetPackageEvent, targetFolder);
-        main.mutatedModifiers(targetPackageException, targetFolder);
-        main.mutatedModifiers(targetPackageMath, targetFolder);
-        main.mutatedModifiers(targetPackageMutable, targetFolder);
+      //  main.mutatedModifiers(targetPackageEvent, targetFolder);
+     //   main.mutatedModifiers(targetPackageException, targetFolder);
+      //  main.mutatedModifiers(targetPackageMath, targetFolder);
+      //  main.mutatedModifiers(targetPackageMutable, targetFolder);
      //   main.mutatedModifiers(targetPackageReflect, targetFolder);
      //   main.mutatedModifiers(targetPackageText, targetFolder);
      //   main.mutatedModifiers(targetPackageTuple, targetFolder);
         //main.mutatedModifiers(targetPackageMain, targetFolder);
+       // main.methodMutation(targetPackageMath, targetFolderJavaSpec);
+        main.varMutation(targetPackageMath, targetFolderInheritance);
     }
+
+    //for whether the subclass has a superclass, and if does it'll check whether subclass inherits an instance variable from the super, and deletes it (IHD)
+    public void varMutation(String targetPackage, String targetFolder) throws NotFoundException, CannotCompileException, IOException, ClassNotFoundException {
+        List<?> classList = getClassesForPackage(targetPackage);
+        for (Object classes : classList) {
+            ClassPool pool = ClassPool.getDefault();
+            ClassLoader classLoader = pool.getClassLoader();
+            String className = ((Class) classes).getCanonicalName().toString();
+            classLoader.loadClass(className);
+            CtClass ctClass = pool.get(className);
+            if (ctClass.getSuperclass().getName() != null) {
+                CtField[] fields = ctClass.getSuperclass().getDeclaredFields();
+                for (CtField fd : fields) {
+                    CtField[] ctFields = ctClass.getDeclaredFields();
+                    for (CtField subField : ctFields) {
+                        if (subField.getName().equals(fd.getName())) {
+                            ctClass.removeField(ctClass.getField(subField.getName()));
+                        }
+                        // this is throwing a duplication exception, I'll investigate and update, you guys are welcome to make changes
+                        //** this is (IHI)
+                        if (fd.getType().getSimpleName() == "int" || fd.getType().getSimpleName() == "long" || fd.getType().getSimpleName() == "double" ||
+                                fd.getType().getSimpleName() == "float" || fd.getType().getSimpleName() == "char" || fd.getType().getSimpleName() == "byte" ||
+                                fd.getType().getSimpleName() == "short" || fd.getType().getSimpleName() == "java.lang.String" || fd.getType().getSimpleName() == "boolean") {
+                           // if (!fd.getName().equals(subField.getName())) {
+                          //      ctClass.addField(fd);
+                          //  }
+                        }
+                    }
+                }
+            }
+            ctClass.writeFile(targetFolder);
+        }
+    }
+
+    // this methods get a given declared method name, and then invokes the instrument object to replace the method body,
+    // **for now this doesn't work, and is throwing a result not stored in $_ exception
+    public void methodMutation(String targetPackage, String targetFolder) throws NotFoundException, CannotCompileException, ClassNotFoundException {
+        List<?> classList = getClassesForPackage(targetPackage);
+        for (Object classes : classList) {
+            ClassPool pool = ClassPool.getDefault();
+            ClassLoader classLoader = pool.getClassLoader();
+            String className = ((Class) classes).getCanonicalName().toString();
+            classLoader.loadClass(className);
+            CtClass ctClass = pool.get(className);
+            CtMethod[] methods = ctClass.getDeclaredMethods();
+            for(CtMethod ctMethod: methods){
+                if(ctMethod.getName() == "getReducedFraction"){
+                    ctMethod.instrument(new ExprEditor() {
+                        @Override
+                        public void edit(MethodCall m) throws CannotCompileException {
+                            StringBuilder sb = new StringBuilder();
+                            sb.append("        if (denominator != 0) {\n");
+                            sb.append("            TemplateClass.instrum(209, \"If\", new PairClass[]{new PairClass(\"denominator\", TemplateClass.valueOf(denominator))});\n");
+                            sb.append("            throw new ArithmeticException(\"The denominator must not be zero\");\n");
+                            sb.append("        } else if (numerator == false) {\n");
+                            sb.append("            TemplateClass.instrum(212, \"If\", new PairClass[]{new PairClass(\"numerator\", TemplateClass.valueOf(Integer.valueOf((int)numerator)))});\n");
+                            sb.append("            TemplateClass.instrum(213, \"Return\", new PairClass[0]);\n");
+                            sb.append("            return ZERO;\n");
+                            sb.append("        } else {\n");
+                            sb.append("            if (denominator == -2147483648 && (numerator & true) == 0) {\n");
+                            sb.append("                TemplateClass.instrum(216, \"If\", new PairClass[]{new PairClass(\"denominator\", TemplateClass.valueOf(denominator)), new PairClass(\"numerator\", TemplateClass.valueOf(Integer.valueOf((int)numerator)))});\n");
+                            sb.append("                TemplateClass.instrum(216, \"If\", new PairClass[]{new PairClass(\"denominator\", TemplateClass.valueOf(denominator)), new PairClass(\"numerator\", TemplateClass.valueOf(Integer.valueOf((int)numerator)))});\n");
+                            sb.append("                denominator /= 2;\n");
+                            sb.append("            }\n");
+                            sb.append("            if (denominator < 0) {\n");
+                            sb.append("                TemplateClass.instrum(220, \"If\", new PairClass[]{new PairClass(\"denominator\", TemplateClass.valueOf(denominator))});\n");
+                            sb.append("                if (numerator == -2147483648 || denominator == -2147483648) {\n");
+                            sb.append("                    TemplateClass.instrum(221, \"If\", new PairClass[]{new PairClass(\"numerator\", TemplateClass.valueOf(Integer.valueOf((int)numerator))), new PairClass(\"denominator\", TemplateClass.valueOf(denominator))});\n");
+                            sb.append("                    throw new ArithmeticException(\"overflow: can't negate\");\n");
+                            sb.append("                }\n");
+                            sb.append("                numerator = -numerator;\n");
+                            sb.append("                denominator = -denominator;\n");
+                            sb.append("            }\n");
+                            sb.append("            gcd = greatestCommonDivisor((int)numerator, denominator);\n");
+                            sb.append("            TemplateClass.instrum(228, \"Assign\", new PairClass[]{new PairClass(\"gcd\", TemplateClass.valueOf(gcd))});\n");
+                            sb.append("            int numerator = numerator / gcd;\n");
+                            sb.append("            denominator /= gcd;\n");
+                            sb.append("            TemplateClass.instrum(231, \"Return\", new PairClass[]{new PairClass(\"numerator\", TemplateClass.valueOf(numerator)), new PairClass(\"denominator\", TemplateClass.valueOf(denominator))});\n");
+                            sb.append("            return new Fraction(numerator, denominator);\n");
+                            sb.append("        }\n");
+                            sb.append("        }\n");
+                            m.replace(sb.toString());
+                            try {
+                                ctClass.writeFile(targetPackageMath);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
 
     /*
     * this method mutates all the modifiers from private to public for all the classes in a given package
@@ -59,7 +170,7 @@ public class Main
             CtClass ctClass = pool.get(className);
             CtMethod[] methods = ctClass.getDeclaredMethods();
             for(CtMethod ctm : methods){
-                ctm.setModifiers(2);
+                ctm.setModifiers(AccessFlag.PRIVATE);
             }
             ctClass.writeFile(targetFolder);
         }
