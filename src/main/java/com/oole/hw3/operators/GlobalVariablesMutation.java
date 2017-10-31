@@ -22,9 +22,8 @@ public class GlobalVariablesMutation implements Operator{
                     if (!Modifier.isStatic(ctf.getModifiers())) {
                         ctf.setModifiers(Modifier.STATIC);
                     }
-                    
                     //JSD
-                    if (Modifier.isStatic(ctf.getModifiers())){
+                    else {
                         ctf.setModifiers(ctf.getModifiers() & ~Modifier.STATIC);
                     }
                 }
