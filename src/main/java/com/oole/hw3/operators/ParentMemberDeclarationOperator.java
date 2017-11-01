@@ -18,7 +18,6 @@ public class ParentMemberDeclarationOperator implements Operator {
             ClassLoader classLoader = pool.getClassLoader();
 
             try {
-
                 classLoader.loadClass(className);
                 CtClass ctClass = pool.get(className);
                 CtField[] ctFields = ctClass.getDeclaredFields();

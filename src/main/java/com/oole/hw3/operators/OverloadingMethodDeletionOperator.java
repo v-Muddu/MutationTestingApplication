@@ -28,7 +28,6 @@ public class OverloadingMethodDeletionOperator implements Operator {
                         System.out.println("Removing overloaded method " + ctMethod.getName()
                                 + " from class " + ctClass.getName());
                         ctClass.removeMethod(ctMethod);
-
                     }
                 }
                 ctClass.writeFile(targetFolderPolymorphism);
@@ -36,7 +35,6 @@ public class OverloadingMethodDeletionOperator implements Operator {
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
