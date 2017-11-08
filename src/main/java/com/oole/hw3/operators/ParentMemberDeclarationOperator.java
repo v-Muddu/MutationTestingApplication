@@ -3,7 +3,13 @@ package com.oole.hw3.operators;
 import com.oole.hw3.utility.FileUtils;
 import javassist.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.List;
 
 public class ParentMemberDeclarationOperator implements Operator {
@@ -16,6 +22,7 @@ public class ParentMemberDeclarationOperator implements Operator {
         for (String className : classList) {
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();
+
 
             try {
 
@@ -32,7 +39,40 @@ public class ParentMemberDeclarationOperator implements Operator {
                     ctField.setType(superClass);
                 }
                 ctClass.writeFile(targetFolderPolymorphism);
+
+                String classPath = targetFolderPolymorphism + "/" + ctClass.getName().replace(".","/");
+                //classLoader.loadClass(classPath);
+                File targetsLocation = new File(classPath);
+                URL url = null;
+                try {
+                    url = targetsLocation.toURI().toURL();
+                } catch (MalformedURLException e) {
+                    System.out.println("Error while generating URL object");
+                }
+                URL[] urls = new URL[]{ url };
+                URLClassLoader urlClassLoader = new URLClassLoader(urls, classLoader);
+                urlClassLoader.loadClass(ctClass.getName());
+                String testClassName = ctClass.getName() + "Test";
+                System.out.println("Test class name >>" + testClassName);
+                System.out.println("Class name >>" + ctClass.getName());
+                //System.out.println("New class path>> "+ classPath);
+
+                Class testClass = urlClassLoader.loadClass(testClassName);
+                Method[] methods = testClass.getMethods();
+                Object obj = testClass.newInstance();
+                System.out.println(methods.length);
+                for(Method method : methods){
+                    System.out.println("Invoking method >>" + method.getName());
+                    method.invoke(obj,null);
+                }
+
             } catch (ClassNotFoundException | NotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
                 e.printStackTrace();
             }
         }

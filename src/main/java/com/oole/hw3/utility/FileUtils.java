@@ -19,7 +19,7 @@ public class FileUtils {
                 String name = entry.getName();
                 String className = name.replaceAll("/",".");
 
-                if(className.endsWith(".class")) {
+                if(className.endsWith(".class") && className.contains("ArrayUtils") && !className.contains("$")) {
                     classList.add(className.substring(0,className.length()-6));
                 }
             }
