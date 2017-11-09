@@ -42,7 +42,7 @@ public class ParentMemberDeclarationOperator implements Operator {
 
                 String classPath = targetFolderPolymorphism + "/" + ctClass.getName().replace(".","/");
                 //classLoader.loadClass(classPath);
-                File targetsLocation = new File(classPath);
+                File targetsLocation = new File(targetFolderPolymorphism);
                 URL url = null;
                 try {
                     url = targetsLocation.toURI().toURL();
