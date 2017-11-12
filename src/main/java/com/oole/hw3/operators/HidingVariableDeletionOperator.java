@@ -4,7 +4,8 @@ import com.oole.hw3.utility.FileUtils;
 import com.oole.hw3.utility.ListOrderingComparator;
 import javassist.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -12,16 +13,15 @@ import java.net.URLClassLoader;
 import java.util.Collections;
 import java.util.List;
 
-public class ParentMemberDeclarationOperator implements Operator {
-
+public class HidingVariableDeletionOperator implements Operator {
     @Override
     public void mutate() throws NotFoundException, CannotCompileException, IOException {
-        System.out.println("Executing the parent member declaration operator");
+        System.out.println("Executing hiding variable deletion");
 
         ClassPool pool = ClassPool.getDefault();
         pool.insertClassPath("D:\\git\\instrumentated_app_hw2\\out\\production\\classes");
 
-        File f = new File(targetFolderPMD);
+        File f = new File(targetFolderIHD);
         File f2 = new File("D:\\git\\instrumentated_app_hw2\\build\\libs\\commons-lang3-3.7-SNAPSHOT-tests");
         URL[] classpath = { f.toURI().toURL(),f2.toURI().toURL() };
         URLClassLoader urlClassLoader = new URLClassLoader(classpath);
@@ -30,41 +30,39 @@ public class ParentMemberDeclarationOperator implements Operator {
         Collections.sort(classList,new ListOrderingComparator());
 
         for (String className : classList) {
-
-            try {
-
+            try{
                 if(!className.contains("$")) {
-                    CtClass ctClass = pool.get(className);
-                    CtField[] ctFields = ctClass.getDeclaredFields();
-                    CtClass superClass = ctClass.getSuperclass();
+                CtClass clazz = pool.get(className);
+                CtClass superClass = clazz.getSuperclass();
+                    if (superClass != null && !superClass.getName().equals("java.lang.Object")) {
+                        CtField[] fields = superClass.getDeclaredFields();
+                        for (CtField fd : fields) {
+                            CtField[] ctFields = clazz.getDeclaredFields();
+                            for (CtField subField : ctFields) {
+                                if (subField.getName().equals(fd.getName())) {
+                                    //IHD
+                                    clazz.removeField(subField);
+                                }
 
-                    for (CtField ctField : ctFields) {
-                        if (ctField.getType().getName().equals(ctClass.getName()) &&
-                                !superClass.getName().equals("java.lang.Object")) {
-                            System.out.println("Changing type of " + ctField.getName() + " from " + ctField.getType().getName() + " to"
-                                    + " super class >" + superClass.getName());
-                            ctField.setType(superClass);
+                            }
                         }
                     }
-
-                    ctClass.writeFile(targetFolderPMD);
+                clazz.writeFile(targetFolderIHD);
                 }
                 else{
                     String classLocation = className.replace(".","\\");
                     File sourceFile = new File("D:\\git\\instrumentated_app_hw2\\out\\production\\classes\\" + classLocation + ".class");
 
-                    File destinationFile =  new File(targetFolderPMD + "\\" + classLocation + ".class");
-                    //org.apache.commons.io.FileUtils.copyDirectory();
+                    File destinationFile =  new File(targetFolderIHD + "\\" + classLocation + ".class");
                     org.apache.commons.io.FileUtils.copyFile(sourceFile,destinationFile);
                 }
-
-            } catch (NotFoundException e) {
-                e.printStackTrace();
+            }catch (Exception e){
+                e.getStackTrace();
             }
         }
         for(String className : classList){
             try{
-                Class c = urlClassLoader.loadClass(className);
+                urlClassLoader.loadClass(className);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -95,6 +93,7 @@ public class ParentMemberDeclarationOperator implements Operator {
                 e.printStackTrace();
             }
         }
+
     }
 
     @Override

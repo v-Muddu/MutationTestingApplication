@@ -11,12 +11,15 @@ public class Main
     {
         public static void main(String[] args) throws IOException, CannotCompileException, NotFoundException, ClassNotFoundException {
             Operator operator = new AccessModifierOperator();
-            Operator hideOperator = new HidingVariablesOperator();
-            Operator JavaSpecOperators = new GlobalVariablesMutation();
             Operator omdOperator = new OverloadingMethodDeletionOperator();
             Operator pmdOperator = new ParentMemberDeclarationOperator();
+            Operator jsiOperator = new JavaStaticModifierInsertionOperator();
+            Operator jsdOperator = new JavaStaticModifierDeletionOperator();
+            Operator ihdOperator = new HidingVariableDeletionOperator();
+            Operator ihiOperator = new HidingVariableInsertionOperator();
+            Operator iodOperator = new OverridingMethodDeletionOperator();
 
-            LauncherThreadExecutorService.executorService.submit(pmdOperator);
+            LauncherThreadExecutorService.executorService.submit(omdOperator);
             LauncherThreadExecutorService.shutdown();
         }
     }
