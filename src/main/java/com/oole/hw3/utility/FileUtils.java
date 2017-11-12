@@ -22,7 +22,7 @@ public class FileUtils {
                     String name = file.getName();
                     String className = name.replaceAll("/",".");
 
-                    //if(!className.contains("$")) {
+                    //if(className.contains("$")) {
                         classList.add(packagePath + className.substring(0,className.length()-6));
                     //}
                 }

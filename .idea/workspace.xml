@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc642aa4-bd3f-43c0-ae0b-169ec86caf55" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT-tests.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/ArrayUtilsMod.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_2_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/ListOrderingComparator.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/AnnotationUtils$1.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/AnnotationUtils.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ApacheCommonsDriver.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArchUtils.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArrayUtils$1.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArrayUtils.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArrayUtilsMod.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/BitField.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/BooleanUtils.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/CharEncoding.class" afterPath="" />
@@ -274,20 +272,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/MutableTriple.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/Pair.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/Triple.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/AccessModifierOperator.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/AccessModifierOperator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/GlobalVariablesMutation.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/GlobalVariablesMutation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/HidingVariablesOperator.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/HidingVariablesOperator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/OverloadingMethodDeletionOperator.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/OverloadingMethodDeletionOperator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/ParentMemberDeclarationOperator.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/operators/ParentMemberDeclarationOperator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/utility/FileUtils.class" afterPath="$PROJECT_DIR$/out/production/classes/com/oole/hw3/utility/FileUtils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/launcher_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/launcher_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/launcher_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/launcher_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/GlobalVariablesMutation.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/GlobalVariablesMutation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/HidingVariablesOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/HidingVariablesOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java" />
     </list>
@@ -311,8 +300,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -323,8 +312,8 @@
       <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="270">
+              <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -333,8 +322,8 @@
       <file leaf-file-name="ParentMemberDeclarationOperator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+            <state relative-caret-position="288">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -342,11 +331,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ListOrderingComparator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/ListOrderingComparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AccessModifierOperator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="135" lean-forward="false" selection-start-line="14" selection-start-column="135" selection-end-line="14" selection-end-column="135" />
+            <state relative-caret-position="198">
+              <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -381,16 +380,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
               <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -599,8 +588,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4528963642493" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="4281167094" />
+        <entry key="$PROJECT_DIR$" value="4528970818454" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="2523846766" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="1061797022" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2101750482" />
       </map>
@@ -722,12 +711,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/M.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/CustomClassLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/ClassFileRead.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/GlobalVariablesMutation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/HidingVariablesOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/ListOrderingComparator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" />
       </list>
     </option>
@@ -759,8 +749,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -777,24 +766,6 @@
               <item name="launcher" type="b2602c69:ProjectViewProjectNode" />
               <item name="vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="mutatedFiles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="mutatedFiles" type="462c0819:PsiDirectoryNode" />
-              <item name="AMC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="mutatedFiles" type="462c0819:PsiDirectoryNode" />
-              <item name="Inheritance" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="mutatedFiles" type="462c0819:PsiDirectoryNode" />
-              <item name="JavaSpec" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="launcher" type="b2602c69:ProjectViewProjectNode" />
@@ -850,12 +821,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/IntellijWorkspace/JavaProblems" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -1051,7 +1023,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1510447513148" />
+    <option name="lastUpdateTimestamp" value="1510454681632" />
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -1074,46 +1046,48 @@
       <workItem from="1510108582446" duration="11987000" />
       <workItem from="1510340650123" duration="138000" />
       <workItem from="1510417838167" duration="5242000" />
-      <workItem from="1510433233958" duration="8782000" />
+      <workItem from="1510433233958" duration="15196000" />
+      <workItem from="1510455714746" duration="2680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55439000" />
+    <option name="totallyTimeSpent" value="64533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35171387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5350224" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25113463" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34277198" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23903178" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25186288" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1163,23 +1137,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java</url>
-          <line>20</line>
+          <line>87</line>
           <properties />
-          <option name="timeStamp" value="26" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java</url>
-          <line>19</line>
+          <line>29</line>
           <properties />
-          <option name="timeStamp" value="35" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="41" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/InstrumentHook.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3222">
@@ -1230,13 +1203,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mutatedFiles/AMC/org/apache/commons/lang3/math/Fraction.class" />
-    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/ArchUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/ArchUtils.class" />
     <entry file="file://$PROJECT_DIR$/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1274,56 +1241,14 @@
     <entry file="file://$PROJECT_DIR$/mutatedFiles/Inheritance/org/apache/commons/lang3/math/Fraction.class" />
     <entry file="file://$PROJECT_DIR$/mutatedFiles/JavaSpec/org/apache/commons/lang3/math/Fraction.class" />
     <entry file="file://$PROJECT_DIR$/mutatedFiles/JavaSpec/org/apache/commons/lang3/AnnotationUtils.class" />
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/text/StrTokenizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="189" column="28" lean-forward="false" selection-start-line="189" selection-start-column="20" selection-end-line="189" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/time/FastDatePrinter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="381" column="5" lean-forward="true" selection-start-line="381" selection-start-column="5" selection-end-line="381" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/tuple/ImmutablePair.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/ImmutableTriple.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/text/StrTokenizer.class" />
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/time/FastDatePrinter.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/tuple/ImmutablePair.class" />
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/ImmutableTriple.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/M.java" />
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArchUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/ArrayUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="100" column="52" lean-forward="false" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArrayUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4734">
-          <caret line="264" column="29" lean-forward="false" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArchUtils.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.7-SNAPSHOT.jar!/org/apache/commons/lang3/ArrayUtils.class" />
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/ArrayUtils.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/Operator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1336,9 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="e#949#950#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1346,7 +1268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2988">
           <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1364,18 +1285,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/math/Fraction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/math/Fraction.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/ClassFileRead.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1386,16 +1299,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/ImmutablePair.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#923#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/tuple/ImmutablePair.class" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/ClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1408,30 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="364" column="0" lean-forward="false" selection-start-line="364" selection-start-column="0" selection-end-line="364" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/AnnotationUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="61" lean-forward="false" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="135" lean-forward="false" selection-start-line="14" selection-start-column="135" selection-end-line="14" selection-end-column="135" />
           <folding />
         </state>
       </provider>
@@ -1456,6 +1336,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mutatedFiles/Polymorphism/org/apache/commons/lang3/AnnotationUtils.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/AccessModifierOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1464,18 +1361,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/ListOrderingComparator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/utility/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="30" lean-forward="false" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="46" column="41" lean-forward="false" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="288">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1484,8 +1389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
