@@ -19,7 +19,7 @@ public class Main
             Operator ihiOperator = new HidingVariableInsertionOperator();
             Operator iodOperator = new OverridingMethodDeletionOperator();
 
-            LauncherThreadExecutorService.executorService.submit(omdOperator);
+            LauncherThreadExecutorService.executorService.submit(pmdOperator);
             LauncherThreadExecutorService.shutdown();
         }
     }

@@ -2,6 +2,7 @@ package com.oole.hw3.operators;
 
 import com.oole.hw3.utility.FileUtils;
 import com.oole.hw3.utility.ListOrderingComparator;
+import com.oole.hw3.utility.PropertiesUtils;
 import javassist.*;
 import javassist.bytecode.AccessFlag;
 
@@ -21,14 +22,14 @@ public class AccessModifierOperator implements Operator {
         System.out.println("Executing the access modifier operator");
 
         ClassPool pool = ClassPool.getDefault();
-        pool.insertClassPath("D:\\git\\instrumentated_app_hw2\\out\\production\\classes");
+        pool.insertClassPath(PropertiesUtils.getProperties().getProperty("sourceClassPath"));
 
-        File f = new File("D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\AMC");
-        File f2 = new File("D:\\git\\instrumentated_app_hw2\\build\\libs\\commons-lang3-3.7-SNAPSHOT-tests");
+        File f = new File(targetFolderEncapsulation);
+        File f2 = new File(PropertiesUtils.getProperties().getProperty("testClassPath"));
         URL[] classpath = { f.toURI().toURL(),f2.toURI().toURL() };
         URLClassLoader urlClassLoader = new URLClassLoader(classpath);
 
-        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
+        List<String> classList = FileUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"),"");
         Collections.sort(classList,new ListOrderingComparator());
 
         for(String className : classList){
@@ -45,9 +46,9 @@ public class AccessModifierOperator implements Operator {
                 }
                 else{
                     String classLocation = className.replace(".","\\");
-                    File sourceFile = new File("D:\\git\\instrumentated_app_hw2\\out\\production\\classes\\" + classLocation + ".class");
+                    File sourceFile = new File(PropertiesUtils.getProperties().getProperty("sourceClassPath") + "\\" + classLocation + ".class");
 
-                    File destinationFile =  new File("D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\AMC" + "\\" + classLocation + ".class");
+                    File destinationFile =  new File(targetFolderEncapsulation + "\\" + classLocation + ".class");
                     org.apache.commons.io.FileUtils.copyFile(sourceFile,destinationFile);
                 }
             } catch (NotFoundException | CannotCompileException | IOException e) {
@@ -58,7 +59,6 @@ public class AccessModifierOperator implements Operator {
         for(String className : classList){
             try{
                 Class c = urlClassLoader.loadClass(className);
-                System.out.println(c.getCanonicalName());
             } catch (Exception e) {
                 e.printStackTrace();
             }

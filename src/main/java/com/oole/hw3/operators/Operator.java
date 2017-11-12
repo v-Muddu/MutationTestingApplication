@@ -1,17 +1,18 @@
 package com.oole.hw3.operators;
 
+import com.oole.hw3.utility.PropertiesUtils;
 import javassist.CannotCompileException;
 import javassist.NotFoundException;
 
 import java.io.IOException;
 
 public interface Operator extends Runnable {
-    String targetFolderEncapsulation = "mutatedFiles/AMC";
-    String targetFolderIHD = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\IHD";
-    String targetFolderIOD = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\IOD";
-    String targetFolderJSI = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\JSI";
-    String targetFolderJSD = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\JSD";
-    String targetFolderPMD = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\PMD";
-    String targetFolderOMD = "D:\\git\\vishwanath_muddu_adarsh_hegde_rohit_vibhu__hw3\\mutatedFiles\\OMD";
+    String targetFolderEncapsulation = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\AMC";
+    String targetFolderIHD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\IHD";
+    String targetFolderIOD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\IOD";
+    String targetFolderJSI = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\JSI";
+    String targetFolderJSD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\JSD";
+    String targetFolderPMD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\PMD";
+    String targetFolderOMD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\OMD";
     void mutate() throws NotFoundException, CannotCompileException, IOException;
 }

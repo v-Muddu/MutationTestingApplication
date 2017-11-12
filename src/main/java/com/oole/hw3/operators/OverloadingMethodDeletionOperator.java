@@ -2,6 +2,7 @@ package com.oole.hw3.operators;
 
 import com.oole.hw3.utility.FileUtils;
 import com.oole.hw3.utility.ListOrderingComparator;
+import com.oole.hw3.utility.PropertiesUtils;
 import javassist.*;
 
 import java.io.File;
@@ -22,14 +23,14 @@ public class OverloadingMethodDeletionOperator implements Operator {
         System.out.println("Executing the overloading method deletion operator");
 
         ClassPool pool = ClassPool.getDefault();
-        pool.insertClassPath("D:\\git\\instrumentated_app_hw2\\out\\production\\classes");
+        pool.insertClassPath(PropertiesUtils.getProperties().getProperty("sourceClassPath"));
 
         File f = new File(targetFolderOMD);
-        File f2 = new File("D:\\git\\instrumentated_app_hw2\\build\\libs\\commons-lang3-3.7-SNAPSHOT-tests");
+        File f2 = new File(PropertiesUtils.getProperties().getProperty("testClassPath"));
         URL[] classpath = { f.toURI().toURL(),f2.toURI().toURL() };
         URLClassLoader urlClassLoader = new URLClassLoader(classpath);
 
-        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
+        List<String> classList = FileUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"),"");
         Collections.sort(classList,new ListOrderingComparator());
 
         for(String className : classList){
@@ -49,7 +50,7 @@ public class OverloadingMethodDeletionOperator implements Operator {
                 ctClass.writeFile(targetFolderOMD);
                 }  else{
                     String classLocation = className.replace(".","\\");
-                    File sourceFile = new File("D:\\git\\instrumentated_app_hw2\\out\\production\\classes\\" + classLocation + ".class");
+                    File sourceFile = new File(PropertiesUtils.getProperties().getProperty("sourceClassPath") + "\\" + classLocation + ".class");
 
                     File destinationFile =  new File(targetFolderOMD + "\\" + classLocation + ".class");
                     org.apache.commons.io.FileUtils.copyFile(sourceFile,destinationFile);
