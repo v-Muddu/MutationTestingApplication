@@ -12,7 +12,7 @@ public class AccessModifierOperator implements Operator {
     public void mutate() {
         System.out.println("Executing the access modifier operator");
 
-        List<String> classList = FileUtils.getClassNamesInJar();
+        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
         for(String className : classList){
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();

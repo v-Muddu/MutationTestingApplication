@@ -9,7 +9,7 @@ import java.util.List;
 public class GlobalVariablesMutation implements Operator{
     @Override
     public void mutate() throws NotFoundException, CannotCompileException, IOException {
-        List<String> classList = FileUtils.getClassNamesInJar();
+        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
         for (String className : classList) {
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();

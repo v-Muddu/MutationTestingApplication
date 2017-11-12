@@ -10,7 +10,7 @@ public class HidingVariablesOperator implements Operator {
     public void mutate() throws NotFoundException, CannotCompileException, IOException {
         System.out.println("Executing hiding variable deletion");
 
-        List<String> classList = FileUtils.getClassNamesInJar();
+        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
         for (String className : classList) {
             ClassPool pool = ClassPool.getDefault();
             ClassLoader classLoader = pool.getClassLoader();

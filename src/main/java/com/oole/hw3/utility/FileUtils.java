@@ -1,32 +1,34 @@
 package com.oole.hw3.utility;
 
-import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 public class FileUtils {
-    public static List<String> classList = new ArrayList<>();
 
-    public static List<String> getClassNamesInJar() {
-        try {
-            JarFile jarFile = new JarFile("lib/commons-lang3-3.7-SNAPSHOT.jar");
-            Enumeration<JarEntry> entries = jarFile.entries();
-            while (entries.hasMoreElements()) {
-                JarEntry entry = entries.nextElement();
-                String name = entry.getName();
-                String className = name.replaceAll("/",".");
+    public static List<String> getClassNamesFromFileSystem(String dirPath, String packagePath) {
+        List<String> classList = new ArrayList<>();
+        File directory = new File(dirPath);
 
-                if(className.endsWith(".class") && className.contains("ArrayUtils") && !className.contains("$")) {
-                    classList.add(className.substring(0,className.length()-6));
+        File[] listOfFilesInDirectory = directory.listFiles();
+        for(File file : listOfFilesInDirectory){
+            if(file.isDirectory()){
+                List<String> fileList = getClassNamesFromFileSystem(file.getPath(),packagePath + file.getName() + ".");
+                if(null != fileList && !fileList.isEmpty())
+                    classList.addAll(fileList);
+
+            } else if(file.isFile()){
+                if(file.getName().endsWith(".class")){
+                    String name = file.getName();
+                    String className = name.replaceAll("/",".");
+
+                    //if(!className.contains("$")) {
+                        classList.add(packagePath + className.substring(0,className.length()-6));
+                    //}
                 }
+
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return classList;
     }
-
 }
