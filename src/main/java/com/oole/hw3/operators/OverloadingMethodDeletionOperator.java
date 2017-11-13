@@ -1,6 +1,6 @@
 package com.oole.hw3.operators;
 
-import com.oole.hw3.utility.FileUtils;
+import com.oole.hw3.utility.LauncherUtils;
 import com.oole.hw3.utility.ListOrderingComparator;
 import com.oole.hw3.utility.PropertiesUtils;
 import javassist.*;
@@ -19,93 +19,61 @@ import java.util.Set;
 public class OverloadingMethodDeletionOperator implements Operator {
 
     @Override
-    public void mutate() throws NotFoundException, CannotCompileException, IOException {
-        System.out.println("Executing the overloading method deletion operator");
+    public void mutate() {
+        try {
+            System.out.println("Executing the overloading method deletion operator");
 
-        ClassPool pool = ClassPool.getDefault();
-        pool.insertClassPath(PropertiesUtils.getProperties().getProperty("sourceClassPath"));
+            ClassPool pool = ClassPool.getDefault();
+            pool.insertClassPath(PropertiesUtils.getProperties().getProperty("sourceClassPath"));
 
-        File f = new File(targetFolderOMD);
-        File f2 = new File(PropertiesUtils.getProperties().getProperty("testClassPath"));
-        URL[] classpath = { f.toURI().toURL(),f2.toURI().toURL() };
-        URLClassLoader urlClassLoader = new URLClassLoader(classpath);
+            File f = new File(targetFolderOMD);
+            File f2 = new File(PropertiesUtils.getProperties().getProperty("testClassPath"));
+            URL[] classpath = {f.toURI().toURL(), f2.toURI().toURL()};
+            URLClassLoader mutatedUrlClassLoader = new URLClassLoader(classpath);
 
-        List<String> classList = FileUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"),"");
-        Collections.sort(classList,new ListOrderingComparator());
+            File file = new File(PropertiesUtils.getProperties().getProperty("sourceClassPath"));
+            URL[] filePath = {file.toURI().toURL(), f2.toURI().toURL()};
+            URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
-        for(String className : classList){
-            try {
-                if(!className.contains("$")) {
-                CtClass ctClass = pool.get(className);
-                CtMethod[] methods = ctClass.getDeclaredMethods();
-                Set<String> methodSet = new HashSet<>();
-                for(CtMethod ctMethod : methods){
-                    if(methodSet.add(ctMethod.getName()) == false){
-                        System.out.println("Removing overloaded method " + ctMethod.getName()
-                                + " from class " + ctClass.getName());
-                        ctClass.removeMethod(ctMethod);
+            List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Collections.sort(classList, new ListOrderingComparator());
 
+            for (String className : classList) {
+                try {
+                    if (!className.contains("$")) {
+                        CtClass ctClass = pool.get(className);
+                        CtMethod[] methods = ctClass.getDeclaredMethods();
+                        Set<String> methodSet = new HashSet<>();
+                        for (CtMethod ctMethod : methods) {
+                            if (methodSet.add(ctMethod.getName()) == false) {
+                                System.out.println("Removing overloaded method " + ctMethod.getName()
+                                        + " from class " + ctClass.getName());
+                                ctClass.removeMethod(ctMethod);
+
+                            }
+                        }
+                        ctClass.writeFile(targetFolderOMD);
+                    } else {
+                        String classLocation = className.replace(".", "\\");
+                        File sourceFile = new File(PropertiesUtils.getProperties().getProperty("sourceClassPath") + "\\" + classLocation + ".class");
+
+                        File destinationFile = new File(targetFolderOMD + "\\" + classLocation + ".class");
+                        org.apache.commons.io.FileUtils.copyFile(sourceFile, destinationFile);
                     }
+                } catch (NotFoundException | CannotCompileException | IOException e) {
+                    e.printStackTrace();
                 }
-                ctClass.writeFile(targetFolderOMD);
-                }  else{
-                    String classLocation = className.replace(".","\\");
-                    File sourceFile = new File(PropertiesUtils.getProperties().getProperty("sourceClassPath") + "\\" + classLocation + ".class");
-
-                    File destinationFile =  new File(targetFolderOMD + "\\" + classLocation + ".class");
-                    org.apache.commons.io.FileUtils.copyFile(sourceFile,destinationFile);
-                }
-            } catch (NotFoundException | CannotCompileException | IOException e) {
-                e.printStackTrace();
             }
-        }
 
-        for(String className : classList){
-            try{
-                Class c = urlClassLoader.loadClass(className);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        for(String className : classList){
-            try{
-
-                String testClassName = className + "Test";
-                System.out.println("Executing Test class >>" + testClassName);
-
-                Class testClass = urlClassLoader.loadClass(testClassName);
-                Method[] methods = testClass.getMethods();
-                Object obj = testClass.newInstance();
-                System.out.println(methods.length);
-                for(Method method : methods){
-                    System.out.println("Invoking method >>" + method.getName());
-                    method.invoke(obj,null);
-                }
-
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+        } catch (NotFoundException | IOException e){
+            e.printStackTrace();
         }
 
     }
 
     @Override
     public void run() {
-        try {
-            mutate();
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        } catch (CannotCompileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        mutate();
     }
 }

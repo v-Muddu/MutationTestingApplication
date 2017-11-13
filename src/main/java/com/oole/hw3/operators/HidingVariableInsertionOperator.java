@@ -1,6 +1,6 @@
 package com.oole.hw3.operators;
 
-import com.oole.hw3.utility.FileUtils;
+import com.oole.hw3.utility.LauncherUtils;
 import com.oole.hw3.utility.ListOrderingComparator;
 import com.oole.hw3.utility.PropertiesUtils;
 import javassist.*;
@@ -28,7 +28,7 @@ public class HidingVariableInsertionOperator implements Operator {
         URL[] classpath = { f.toURI().toURL(),f2.toURI().toURL() };
         URLClassLoader urlClassLoader = new URLClassLoader(classpath);
 
-        List<String> classList = FileUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
+        List<String> classList = LauncherUtils.getClassNamesFromFileSystem("D:\\git\\instrumentated_app_hw2\\out\\production\\classes","");
         Collections.sort(classList,new ListOrderingComparator());
 
         for (String className : classList) {

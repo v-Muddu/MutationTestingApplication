@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Properties Utility
+ * Provides utility method to load properties from file
+ */
 public class PropertiesUtils {
 
     static Properties prop = new Properties();
@@ -21,6 +25,11 @@ public class PropertiesUtils {
             e.printStackTrace();
         }
     }
+
+    /**
+     * get Properties
+     * @return returns all the properties loaded from config file
+     */
     public static Properties getProperties(){
         return prop;
     }
