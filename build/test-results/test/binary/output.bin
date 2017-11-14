@@ -1,30 +1,0 @@
-9Loading class: org.apache.commons.lang3.AnnotationUtils
-DExecuting Test class: org.apache.commons.lang3.AnnotationUtilsTest
-FCreating instance for : org.apache.commons.lang3.AnnotationUtilsTest
-Invoking test method: setup
-IInvoking test method: testGeneratedAnnotationEquivalentToRealAnnotation
-7Invoking test method: testAnnotationsOfDifferingTypes
-7Invoking test method: testIsValidAnnotationMemberType
-(Invoking test method: testSameInstance
-$Invoking test method: testHashCode
-$Invoking test method: testToString
-&Invoking test method: testOneArgNull
-(Invoking test method: testBothArgsNull
-'Invoking test method: testEquivalence
->Invoking test method: testNonEquivalentAnnotationsOfSameType
-Invoking test method: wait
-¶Error while invoking the method: public final void java.lang.Object.wait() throws java.lang.InterruptedExceptionfrom class: org.apache.commons.lang3.AnnotationUtils
-Invoking test method: wait
-ÆError while invoking the method: public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedExceptionfrom class: org.apache.commons.lang3.AnnotationUtils
-Invoking test method: wait
-±Error while invoking the method: public final native void java.lang.Object.wait(long) throws java.lang.InterruptedExceptionfrom class: org.apache.commons.lang3.AnnotationUtils
-Invoking test method: equals
-èError while invoking the method: public boolean java.lang.Object.equals(java.lang.Object)from class: org.apache.commons.lang3.AnnotationUtils
- Invoking test method: toString
- Invoking test method: hashCode
- Invoking test method: getClass
-Invoking test method: notify
-âError while invoking the method: public final native void java.lang.Object.notify()from class: org.apache.commons.lang3.AnnotationUtils
-!Invoking test method: notifyAll
-åError while invoking the method: public final native void java.lang.Object.notifyAll()from class: org.apache.commons.lang3.AnnotationUtils
-IDone Executing Test class: org.apache.commons.lang3.AnnotationUtilsTest
