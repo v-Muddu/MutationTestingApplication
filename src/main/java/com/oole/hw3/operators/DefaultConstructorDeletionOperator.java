@@ -17,7 +17,7 @@ import java.util.Set;
  * Java-Specified Default Constructor Deletion
  * This operator performs mutation by deletin the default constructor in a class
  */
-public class DefaultConstructorDeletion implements Operator {
+public class DefaultConstructorDeletionOperator implements Operator {
     /**
      *
      * Performs mutation

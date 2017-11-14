@@ -17,7 +17,7 @@ public class Main
             Operator jsdOperator = new JavaStaticModifierDeletionOperator();
             Operator ihdOperator = new HidingVariableDeletionOperator();
             Operator iodOperator = new OverridingMethodDeletionOperator();
-            Operator jcdOperator = new DefaultConstructorDeletion();
+            Operator jcdOperator = new DefaultConstructorDeletionOperator();
 
 
             LauncherThreadExecutorService.executorService.submit(ihdOperator);
