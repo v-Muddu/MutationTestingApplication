@@ -24,19 +24,19 @@ Once the application is downloaded, follow these steps to setup the project:
 
 1.  Set the following properties in the config.properties file according to your file system
     
-    #path to the bytecode of your input classes
+    //path to the bytecode of your input classes
     sourceClassPath= <Add the path to the source files in instrumented application>
     
-    #path to the bytecode of the test classes.
+    //path to the bytecode of the test classes.
     testClassPath=<Add the path to the test files in instrumented application>
     
-    #path to the directory storing mutated output
+    //path to the directory storing mutated output
     mutationClassPath=<add the path to the mutation output directory mutatedFiles. Its inside the project structure itself>
     
-    #path to the trace file
+    //path to the trace file
     traceFilePath=D:\\application.log
     
-    #path to the output csv file. Used to view the results of tests against mutated classes
+    //path to the output csv file. Used to view the results of tests against mutated classes
     csvFilePath=D:\\output.csv
 
 **How to run the Launcher application?**

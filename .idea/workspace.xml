@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc642aa4-bd3f-43c0-ae0b-169ec86caf55" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierDeletionOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierDeletionOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierInsertionOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierInsertionOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" afterPath="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -48,12 +46,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="246">
-                <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <first_editor relative-caret-position="264">
+                <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -83,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParentMemberDeclarationOperator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParentMemberDeclarationOperator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
@@ -482,12 +480,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/Main.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/config.properties" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/HidingVariableInsertionOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierDeletionOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/JavaStaticModifierInsertionOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/OverloadingMethodDeletionOperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/ParentMemberDeclarationOperator.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -918,7 +916,7 @@
       <workItem from="1510433233958" duration="15196000" />
       <workItem from="1510455714746" duration="18590000" />
       <workItem from="1510504306168" duration="6137000" />
-      <workItem from="1510588299951" duration="31016000" />
+      <workItem from="1510588299951" duration="31083000" />
     </task>
     <servers />
   </component>
@@ -952,7 +950,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138035000" />
+    <option name="totallyTimeSpent" value="138102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="0" />
@@ -1370,17 +1368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="246">
-            <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/oole/hw3/operators/DefaultConstructorDeletionOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1116">
@@ -1436,6 +1423,17 @@
         <state relative-caret-position="108">
           <caret line="19" column="65" lean-forward="false" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="264">
+            <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
