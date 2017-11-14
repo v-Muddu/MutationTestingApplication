@@ -33,4 +33,8 @@ public class PropertiesUtils {
     public static Properties getProperties(){
         return prop;
     }
+
+    public static void setProperty(String key, String value){
+        prop.setProperty(key,value);
+    }
 }

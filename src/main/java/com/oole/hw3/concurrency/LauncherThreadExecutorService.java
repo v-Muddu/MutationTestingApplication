@@ -13,7 +13,7 @@ public class LauncherThreadExecutorService {
     /**
      * thread pool of constant size
      */
-    public static ExecutorService executorService = Executors.newFixedThreadPool(8);
+    public static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     /**
      * shuts down the executor service

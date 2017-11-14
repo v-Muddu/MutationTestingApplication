@@ -7,6 +7,10 @@ import java.io.Writer;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * CSV Utils
+ * For operations on CSV files
+ */
 public class CSVUtils {
 
     private static final char DEFAULT_SEPARATOR = ',';
@@ -26,6 +30,12 @@ public class CSVUtils {
         }
    }
 
+    /**
+     * writes the input list items as comma separated values into the csv file
+     * @param w
+     * @param values
+     * @throws IOException
+     */
     public static void writeLine(Writer w, List<String> values) throws IOException {
         writeLine(w, values, DEFAULT_SEPARATOR, ' ');
     }
