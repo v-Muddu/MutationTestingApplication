@@ -70,5 +70,20 @@ The operators to be applied are inside the operators package. We have implemente
 
 Each operator is implemented as a thread and passed to the executor service framework for execution
 
+Each operator class performs its own mutation and stores the mutated class files in the output directory.
+Next we use two Class loader instances:
+1. First class loader loads the original class files and executes test cases.
+2. Second class loader loads the mutated class files and executes test cases.
 
+Finally the trace generated from the above two executions is compared and result is obtained in boolean form.
+Above step is done for each class under each mutation operator. The output is stored into the csv file in the following format:
+
+Operator Name | Class Name | Mutation Applied (Y/N) | Mutation Detected (Y/N)
+
+Currently the mutations are applied to all classes, however the execution and trace generation is taking a long time.
+Thus, we have limited the execution part to only 10 classes(for which mutation has been applied) under each operator. 
+
+If the execution takes too long, please go to Main class and pass lesser number of operators to the ExecutorService object.
+
+The output can be seen in the csv file and console too.
 
