@@ -15,6 +15,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Parent Member Declaration Operator
+ * This operator changes the type of a subclass field to a super type
+ */
 public class ParentMemberDeclarationOperator implements Operator {
 
     @Override

@@ -16,6 +16,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Java Static Modifier Insertion Operator
+ * This operator inserts static modifier to the fields
+ */
 public class JavaStaticModifierInsertionOperator implements Operator {
     @Override
     public void mutate() {

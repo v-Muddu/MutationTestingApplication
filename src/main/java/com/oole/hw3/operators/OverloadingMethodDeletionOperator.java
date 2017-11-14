@@ -16,6 +16,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Overloading Method Deletion Operator
+ * This operator deletes the overloaded method in a class
+ */
 public class OverloadingMethodDeletionOperator implements Operator {
 
     @Override
