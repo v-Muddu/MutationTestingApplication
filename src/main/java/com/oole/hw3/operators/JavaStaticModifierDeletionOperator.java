@@ -12,7 +12,9 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class JavaStaticModifierDeletionOperator implements Operator {
     @Override
@@ -32,6 +34,8 @@ public class JavaStaticModifierDeletionOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
+
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -42,6 +46,7 @@ public class JavaStaticModifierDeletionOperator implements Operator {
                         //JSI
                         if (!Modifier.isStatic(ctf.getModifiers())) {
                             ctf.setModifiers(Modifier.STATIC);
+                            mutatedClassSet.add(className);
                         }
 
                     }
@@ -55,7 +60,7 @@ public class JavaStaticModifierDeletionOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Static Modifier Deletion Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
 
         }catch (NotFoundException | CannotCompileException | IOException e){
             e.printStackTrace();

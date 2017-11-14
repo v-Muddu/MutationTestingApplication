@@ -36,6 +36,7 @@ public class OverloadingMethodDeletionOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -49,6 +50,7 @@ public class OverloadingMethodDeletionOperator implements Operator {
                                 System.out.println("Removing overloaded method " + ctMethod.getName()
                                         + " from class " + ctClass.getName());
                                 ctClass.removeMethod(ctMethod);
+                                mutatedClassSet.add(className);
 
                             }
                         }
@@ -65,7 +67,7 @@ public class OverloadingMethodDeletionOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Access Modifier Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
         } catch (NotFoundException | IOException e){
             e.printStackTrace();
         }

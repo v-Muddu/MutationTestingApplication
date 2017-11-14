@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Access Modifier Mutation operator
@@ -41,6 +43,7 @@ public class AccessModifierOperator implements Operator {
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
             Collections.sort(classList, new ListOrderingComparator());
+            Set<String> mutatedClassSet = new HashSet<>();
 
             // the below code takes one class at a time and applies the mutation
             for (String className : classList) {
@@ -49,8 +52,10 @@ public class AccessModifierOperator implements Operator {
                         CtClass ctClass = pool.get(className);
                         CtMethod[] methods = ctClass.getDeclaredMethods();
                         for (CtMethod ctm : methods) {
-                            if (ctm.getModifiers() == 1 || ctm.getModifiers() == 4)
+                            if (ctm.getModifiers() == 1 || ctm.getModifiers() == 4) {
                                 ctm.setModifiers(AccessFlag.PRIVATE);
+                                mutatedClassSet.add(ctClass.getName());
+                            }
                         }
                         ctClass.writeFile(targetFolderEncapsulation);
 
@@ -61,12 +66,13 @@ public class AccessModifierOperator implements Operator {
                         File destinationFile = new File(targetFolderEncapsulation + "\\" + classLocation + ".class");
                         org.apache.commons.io.FileUtils.copyFile(sourceFile, destinationFile);
                     }
+
                 } catch (NotFoundException | CannotCompileException | IOException e) {
                     e.printStackTrace();
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Access Modifier Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
         } catch (NotFoundException | IOException e){
             e.printStackTrace();
         }

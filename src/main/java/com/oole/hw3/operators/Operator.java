@@ -5,6 +5,7 @@ import javassist.CannotCompileException;
 import javassist.NotFoundException;
 
 import java.io.IOException;
+import java.util.concurrent.Callable;
 
 /**
  * The Operator interface
@@ -32,6 +33,8 @@ public interface Operator extends Runnable {
 
     // destination folder for storing mutation code for overriding method deletion operator
     String targetFolderOMD = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\OMD";
+
+    String targetFolderJDC = PropertiesUtils.getProperties().getProperty("mutationClassPath") + "\\JDC";
 
     /**
      * Performs mutation operation on bytecode

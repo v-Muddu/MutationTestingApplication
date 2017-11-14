@@ -11,7 +11,9 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ParentMemberDeclarationOperator implements Operator {
 
@@ -33,6 +35,7 @@ public class ParentMemberDeclarationOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -50,6 +53,7 @@ public class ParentMemberDeclarationOperator implements Operator {
                                 System.out.println("Changing type of " + ctField.getName() + " from " + ctField.getType().getName() + " to"
                                         + " super class >" + superClass.getName());
                                 ctField.setType(superClass);
+                                mutatedClassSet.add(className);
                             }
                         }
 
@@ -68,7 +72,7 @@ public class ParentMemberDeclarationOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Parent Member Declaration Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
 
         }catch (NotFoundException | CannotCompileException | IOException e){
             e.printStackTrace();

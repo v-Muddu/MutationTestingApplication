@@ -12,7 +12,10 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 /**
  * Hiding Variable Deletion operator
  * This operator performs mutation by deleting hiding variables in the sub class so that
@@ -44,6 +47,8 @@ public class HidingVariableDeletionOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
+
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -59,6 +64,7 @@ public class HidingVariableDeletionOperator implements Operator {
                                     if (subField.getName().equals(fd.getName())) {
                                         //IHD
                                         clazz.removeField(subField);
+                                        mutatedClassSet.add(clazz.getName());
                                     }
                                 }
                             }
@@ -76,7 +82,7 @@ public class HidingVariableDeletionOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Hiding Variable Deletion Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
         }catch(NotFoundException | IOException e){
             e.printStackTrace();
         }

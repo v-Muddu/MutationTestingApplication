@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -13,6 +12,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Launcher Utils
@@ -41,7 +41,7 @@ public class LauncherUtils {
 
             } else if(file.isFile()){
 
-                if(file.getName().endsWith(".class")){
+                if(file.getName().endsWith(".class") && !file.getName().contains("ApacheCommonsDriver")){
                     String name = file.getName();
                     String className = name.replaceAll("/",".");
 
@@ -63,35 +63,49 @@ public class LauncherUtils {
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    public static synchronized List<String> executeClassFromTestClass(String className, URLClassLoader urlClassLoader) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public static synchronized List<String> executeClassFromTestClass(String className, URLClassLoader urlClassLoader) {
 
-        Class cls = urlClassLoader.loadClass(className);
-        System.out.println("Loading class: " + cls.getCanonicalName());
+        List<String> lines = null;
+        try {
+            Class cls = urlClassLoader.loadClass(className);
+            System.out.println("Loading class: " + cls.getCanonicalName());
 
-        String testClassName = className + "Test";
-        System.out.println("Executing Test class: " + testClassName);
-        Class testCls = urlClassLoader.loadClass(testClassName);
+            String testClassName = className + "Test";
+            System.out.println("Executing Test class: " + testClassName);
+            Class testCls = urlClassLoader.loadClass(testClassName);
 
-        Method[] methods = testCls.getMethods();
-        Object obj = testCls.newInstance();
+            Method[] methods = testCls.getMethods();
+            Object obj = testCls.newInstance();
+            System.out.println("Creating instance for : " + testClassName);
 
-        String path = PropertiesUtils.getProperties().getProperty("traceFilePath");
+            String path = PropertiesUtils.getProperties().getProperty("traceFilePath");
 
-        // clean trace file before execution of test cases
-        cleanTraceFile(path);
+            // clean trace file before execution of test cases
+            cleanTraceFile(path);
 
-        for(Method method : methods){
-            System.out.println("Invoking test method: "+ method.getName());
+            long startTime = System.currentTimeMillis();
 
-            try {
-                method.invoke(obj, null);
-            } catch (Exception e){
-                System.out.println("Error while invoking the method: "+ method
-                + "from class: " + cls.getName());
+            for (Method method : methods) {
+                long currentTime = System.currentTimeMillis();
+                if((currentTime-startTime) > 30000){
+                    break;
+                }
+
+                System.out.println("Invoking test method: " + method.getName());
+
+                try {
+                    method.invoke(obj, null);
+                } catch (Exception | Error e) {
+                    System.out.println("Error while invoking the method: " + method
+                            + "from class: " + cls.getName());
+                }
             }
+            System.out.println("Done Executing Test class: " + testClassName);
+            // read all lines in traces file into list
+            lines = Files.readAllLines(Paths.get(path), Charset.defaultCharset());
+        } catch (Exception | Error e){
+            System.out.println("Error while executing test class for class: " + className);
         }
-        // read all lines in traces file into list
-        List<String> lines = Files.readAllLines(Paths.get(path), Charset.defaultCharset());
         return lines;
     }
 
@@ -103,8 +117,10 @@ public class LauncherUtils {
      * @return return true or false depending on if the trace files match or not
      * @throws FileNotFoundException
      */
-    public static boolean compareTraces(List<String> lines, List<String> mutatedLines) throws FileNotFoundException {
+    public static boolean compareTraces(List<String> lines, List<String> mutatedLines) {
         try {
+            if(null == lines || null == mutatedLines)
+                return false;
             if(lines.size() != mutatedLines.size()){
                 return  false;
             }
@@ -142,17 +158,47 @@ public class LauncherUtils {
      * @param classList
      * @param orgUrlClassLoader
      * @param mutatedUrlClassLoader
+     * @param operatorName
+     * @param mutatedClassSet
      */
-    public static void prepareClassesForExecution(List<String> classList, URLClassLoader orgUrlClassLoader, URLClassLoader mutatedUrlClassLoader){
+    public static synchronized void prepareClassesForExecution(String operatorName, List<String> classList, Set<String> mutatedClassSet, URLClassLoader orgUrlClassLoader, URLClassLoader mutatedUrlClassLoader){
+        int classCount = 0;
         for (String className : classList) {
+            if(className.contains("$") || className.contains("Fraction"))
+                continue;
+            if(classCount > 10)
+                break;
+
             try {
+                List<String> csvLine = new ArrayList<>();
+                csvLine.add(operatorName);
+                csvLine.add(className);
+                if(mutatedClassSet.contains(className))
+                    csvLine.add("YES");
+                else {
+                    csvLine.add("NO");
+                    csvLine.add("--");
+                    CSVUtils.writeLine(CSVUtils.writer, csvLine);
+                    CSVUtils.writer.flush();
+                    continue;
+                }
+                classCount++;
 
                 List<String> lines = LauncherUtils.executeClassFromTestClass(className, orgUrlClassLoader);
                 List<String> mutatedLines = LauncherUtils.executeClassFromTestClass(className, mutatedUrlClassLoader);
                 boolean result = LauncherUtils.compareTraces(lines, mutatedLines);
-                System.out.println("Comparing trace files for class name: " + className + "result: " + result);
 
-            } catch (IllegalAccessException | InstantiationException | ClassNotFoundException | IOException e) {
+                if(result)
+                    csvLine.add("NO");
+                else
+                    csvLine.add("YES");
+
+                CSVUtils.writeLine(CSVUtils.writer, csvLine);
+
+                CSVUtils.writer.flush();
+                System.out.println("Comparing trace files for class name: " + className + " result: " + result);
+
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

@@ -12,7 +12,9 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class OverridingMethodDeletionOperator implements Operator {
 
@@ -34,6 +36,7 @@ public class OverridingMethodDeletionOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -52,6 +55,7 @@ public class OverridingMethodDeletionOperator implements Operator {
                                         System.out.println("Applying IOD Operator to remove method " + ctMethod.getName()
                                                 + " from class " + clazz.getName());
                                         clazz.removeMethod(ctMethod);
+                                        mutatedClassSet.add(className);
 
                                     }
                                 }
@@ -70,7 +74,7 @@ public class OverridingMethodDeletionOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Overriding Method Deletion Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
 
         } catch (NotFoundException | IOException e){
             e.printStackTrace();

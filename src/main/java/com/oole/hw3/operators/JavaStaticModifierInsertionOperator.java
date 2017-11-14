@@ -12,7 +12,9 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class JavaStaticModifierInsertionOperator implements Operator {
     @Override
@@ -33,6 +35,7 @@ public class JavaStaticModifierInsertionOperator implements Operator {
             URLClassLoader orgUrlClassLoader = new URLClassLoader(filePath);
 
             List<String> classList = LauncherUtils.getClassNamesFromFileSystem(PropertiesUtils.getProperties().getProperty("sourceClassPath"), "");
+            Set<String> mutatedClassSet = new HashSet<>();
             Collections.sort(classList, new ListOrderingComparator());
 
             for (String className : classList) {
@@ -44,6 +47,7 @@ public class JavaStaticModifierInsertionOperator implements Operator {
                         //JSD
                         if (Modifier.isStatic(ctf.getModifiers())) {
                             ctf.setModifiers(ctf.getModifiers() & ~Modifier.STATIC);
+                            mutatedClassSet.add(className);
                         }
                     }
                     clazz.writeFile(targetFolderJSI);
@@ -56,7 +60,7 @@ public class JavaStaticModifierInsertionOperator implements Operator {
                 }
             }
 
-            LauncherUtils.prepareClassesForExecution(classList, orgUrlClassLoader, mutatedUrlClassLoader);
+            LauncherUtils.prepareClassesForExecution("Static Modifier Insertion Operator", classList, mutatedClassSet, orgUrlClassLoader, mutatedUrlClassLoader);
         } catch (NotFoundException | CannotCompileException | IOException e) {
             e.printStackTrace();
         }
