@@ -2,15 +2,10 @@
 _Java bytecode Mutation_
 
 Applications and their repositories:
-Instrumenting Application(ast-instrumentation) - Adarsh_Hegde_hw2 (https://ahegde5@bitbucket.org/ahegde5/adarsh_hegde_hw2.git)
-Instrumented Application (Apache Commons Lang) - Instrumentated_App_Hw2 (https://ahegde5@bitbucket.org/v-Muddu/instrumentated_app_hw2.git)
+Instrumenting Application(ast-instrumentation) - https://github.com/v-Muddu/InstrumentationApp
+Instrumented Application (Apache Commons Lang) - https://github.com/apache/commons-lang)
 
 The instrumented application is the input to the current project "launcher"
-
-
-
-Read access to both repositories is provided to graders
-
 
 **Overview**
 In this assignment, we implement bytecode manipulation during runtime using javassist.
